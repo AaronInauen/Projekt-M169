@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+  moodle:
+    image: bitnami/moodle:latest
+    restart: always
+    ports: 
+    - 8080:80
+    environment:
+      MOODLE_DATABSE_TYPE: mysqli
+      MOODLE_DATABSE_HOST: Moodle
+      MOODLE_DATABASE_NAME: Moodle
+      MOODLE_DATABASE_USER: root
+      MOODLE_DATABASE_PASSWORD: Test
+    volumes:
+      - moodle:/bitnami/moodle
+      - moodledata:/bitnami/moodledata
+    networks:
+      - moodlenet
+
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: Moodle
+      MYSQL_ROOT_PASSWORD: Test
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - moodlenet
+
+volumes:
+  db:
+  moodle:
+  moodledata:
+
+networks:
+  moodlenet:
+    driver: bridge
