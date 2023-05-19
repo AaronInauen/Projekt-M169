@@ -2,6 +2,7 @@ version: '3'
 services:
   moodle:
     image: 'bitnami/moodle:4.1.2'
+    restart: 'no'
     ports:
       - '8080:8080'
     depends_on:
@@ -11,24 +12,43 @@ services:
       - MOODLE_DATABASE_HOST=db
       - MOODLE_DATABASE_PORT=3306
       - MOODLE_DATABASE_USER=moodle
-      - MOODLE_DATABASE_PASSWORD=secret
+      - MOODLE_DATABASE_PASSWORD_FILE=/run/secrets/db_password
       - MOODLE_DATABASE_NAME=moodle
     volumes:
       - moodledata:/var/www/html/moodledata
     networks:
       - moodlenet
+    secrets:
+      - db_password
 
   db:
     image: 'mysql:latest'
     environment:
       - MYSQL_DATABASE=moodle
       - MYSQL_USER=moodle
-      - MYSQL_PASSWORD=secret
-      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_PASSWORD_FILE=/run/secrets/db_password
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_password
     volumes:
       - dbdata:/var/lib/mysql
     networks:
       - moodlenet
+    secrets:
+      - db_password
+
+  pma:  
+    image: phpmyadmin/phpmyadmin  
+    container_name: pma  
+    restart: always  
+    networks:  
+      - moodlenet  
+    ports:  
+      - "8081:80"  
+    environment:  
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD_FILE=/run/secrets/db_password
+    secrets:
+      - db_password
 
 volumes:
   moodledata:
@@ -37,3 +57,7 @@ volumes:
 networks:
   moodlenet:
     driver: bridge
+
+secrets:
+  db_password:
+    file: ./db_password.txt
