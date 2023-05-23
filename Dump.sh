@@ -1,5 +1,5 @@
 #!/bin/bash 
-# Script zur automatischen erzeugung von SQLdumps mit automatischer Benennung der Datei
+# Script zur automatischen erzeugung von SQLdumps mit automatischer Benennung der Datei 
 # Datenbankzugangsdaten 
 MYSQL_USER="root" 
 MYSQL_PASSWORD="Secret" 
