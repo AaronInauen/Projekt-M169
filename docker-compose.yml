@@ -16,6 +16,7 @@ services:
       - MOODLE_DATABASE_NAME=moodle
     volumes:
       - moodledata:/var/www/html/moodledata
+    container_name: newmoodle_moodle_1
     networks:
       - moodlenet
     secrets:
@@ -30,6 +31,7 @@ services:
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_password
     volumes:
       - dbdata:/var/lib/mysql
+    container_name: newmoodle_db_1
     networks:
       - moodlenet
     secrets:
