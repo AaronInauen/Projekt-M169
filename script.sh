@@ -28,10 +28,11 @@ docker exec -i newmoodle_db_1 mysql -u root --password=$password moodle < ./dump
 # Aufräumen: Lokalen Dump entfernen
 rm dump4-1-2.sql
 
-# Cronjobskript wird eingefügt
-docker cp /home/vmadmin/NewMoodle/Dump.sh newmoodle_db_1:/var/lib/mysql
+# Cronjobskript einfügen und Rechte anpassen
+sudo docker cp /home/vmadmin/NewMoodle/Dump.sh newmoodle_db_1:/var/lib/mysql/
+docker exec newmoodle_db_1 chmod 760 /var/lib/mysql/Dump.sh
 
-# Cronjob wird erstellt
+# Cronjob erstellen
 sudo su <<suON
 echo "0 22 * * * docker exec newmoodle_db_1 /var/lib/mysql/Dump.sh" &>>/var/spool/cron/crontabs/root
 suON
