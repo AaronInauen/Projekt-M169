@@ -21,6 +21,7 @@ sudo docker cp /home/vmadmin/NewMoodle/dump4-1-2.sql newmoodle_db_1:/var/lib/mys
 
 sleep 10
 
+# Bestehende Moodle DB wird gelöscht und wieder erstellt
 docker exec -i newmoodle_db_1 bash -c "mysql -u root --password=$password -e 'DROP DATABASE moodle; CREATE DATABASE moodle;'"
 
 # In den MySQL-Container wechseln und den Dump importieren
