@@ -15,7 +15,7 @@ services:
       - MOODLE_DATABASE_PASSWORD_FILE=/run/secrets/db_password
       - MOODLE_DATABASE_NAME=moodle
     volumes:
-      - moodledata:/var/www/html/moodledata
+      - moodledata:/bitnami/moodledata
     container_name: newmoodle_moodle_1
     networks:
       - moodlenet
