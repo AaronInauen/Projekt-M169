@@ -14,4 +14,4 @@
 3. Es dauert ca. 6-7min bis das Script fertig ausgeführt ist. 
 4. Das Moodle ist nun unter http://localhost:80 erreichbar.
 
-***HINWEIS: Eine detailliertere befindet sich in unsere Dokumentation (M169_Realisierung_ABS.docx)***
+***HINWEIS: Eine detailliertere Anleitung befindet sich in unsere Dokumentation (M169_Realisierung_ABS.docx)***
