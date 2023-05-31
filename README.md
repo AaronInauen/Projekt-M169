@@ -3,6 +3,7 @@
 1. Bei folgender Datei den Port auf 8080 anpassen (z.B. mit sudo nano): /etc/apache2/ports.conf
 2. Bei folgender Datei den Port auf 8080 anpassen: /etc/apache2/sites-enabled/000-default.conf
 3. Bei folgender Datei den Port 8080 ergänzen (bei wwwroot = 'http://localhost'): /var/www/html/config.php
+4. Damit die Änderungen übernommen werden, muss der Apache-Server neu gestartet werden (z.B. mit diesem Befehl: /etc/init.d/apache2 restart
 
 ## Neues Moodle in Betrieb nehmen:
 1. Folgende Dateien in einen Ordner (z.B. /home/vmadmin/) auf dem (Ubuntu) Host kopieren:
