@@ -8,7 +8,7 @@ read -p "Bitte geben Sie das Passwort für die lokale-DB ein: " password2
 docker-compose up -d
 
 # Warten, bis die Container gestartet sind
-sleep 300
+sleep 200
 
 # MySQL-Dump erstellen
 sudo mysqldump --password=$password2 moodle > dump4-1-2.sql
@@ -16,7 +16,8 @@ sudo mysqldump --password=$password2 moodle > dump4-1-2.sql
 sleep 30
 
 # Dump in den MySQL-Container laden
-docker cp /home/vmadmin/NewMoodle/dump4-1-2.sql newmoodle_db_1:/var/lib/mysql
+sudo docker cp /home/vmadmin/NewMoodle/dump4-1-2.sql newmoodle_db_1:/var/lib/mysql
+
 
 sleep 10
 
@@ -36,3 +37,19 @@ docker exec newmoodle_db_1 chmod 760 /var/lib/mysql/Dump.sh
 sudo su <<suON
 echo "0 22 * * * docker exec newmoodle_db_1 /var/lib/mysql/Dump.sh" &>>/var/spool/cron/crontabs/root
 suON
+
+# Es wird gesagt was gemacht werden muss
+echo "Öffnen Sie http://localhost:80 in ihrem Browser und führen Sie das Datenbankupgrade aus."
+
+# Ausgabe einer Nachricht
+echo "Das Skript wird pausiert. Drücken Sie Enter, um fortzufahren."
+
+# Warten auf Benutzereingabe
+read
+
+# Fortsetzung des Skripts
+echo "Fortsetzung des Skripts..."
+
+# Moodle-Daten in Container verschieben
+sudo cp -r /var/www/moodledata/* /var/lib/docker/volumes/newmoodle_moodledata/_data
+
