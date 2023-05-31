@@ -1,6 +1,6 @@
 # Projekt-M169
 ## Altes Moodle unter Port 8080 laufen lassen:
-1. Bei folgender Datei den Port auf 8080 anpassen: /etc/apache2/ports.conf
+1. Bei folgender Datei den Port auf 8080 anpassen (z.B. mit sudo nano): /etc/apache2/ports.conf
 2. Bei folgender Datei den Port auf 8080 anpassen: /etc/apache2/sites-enabled/000-default.conf
 3. Bei folgender Datei den Port 8080 ergänzen (bei wwwroot = 'http://localhost'): /var/www/html/config.php
 
