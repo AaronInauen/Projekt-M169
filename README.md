@@ -13,6 +13,7 @@
 - script.sh
 
 ***Hinweis: Da die Dateien von Windows zu Ubuntu kopiert werden, können Probleme beim Ausführen der Datei «script.sh» auftreten. Dies kann man umgehen, wenn man den Inhalt der script.sh-Datei kopiert. Dann eine neue Datei erstellt und dort den Inhalt einfügt. Wichtig ist, dass die neue Datei denselben Namen hat und sich im gleichen Pfad wie die anderen Dateien befindet.***
+
 2.	Wenn diese kopiert wurden, müssen die Berechtigungen so angepasst werden, dass alle Dateien ausgeführt werden können. Wir sind darum im Terminal in den Ordner gewechselt werden, in welchen die Dateien kopiert wurden. Danach kann man mit folgendem Befehl allen Dateien (in diesem Ordner) volle Berechtigungen geben: chmod 777 *.* 
 3.	Damit man Dockercompose verwenden kann, muss es zuerst installiert werden. Wir haben dafür diesen Befehl im Terminal ausgeführt: sudo apt install docker-compose
 4.	Sobald Docker-Compose installiert ist, kann das script.sh mit dem Befehl ./script.sh ausgeführt werden.
