@@ -36,4 +36,4 @@
 19.	Man kann das Moodle über http://localhost:80 erreichen.
 20.	Demo Moodle erreichbar auf Port 80
 
-***HINWEIS: Eine detailliertere Anleitung befindet sich in unsere Dokumentation (M169_Realisierung_ABS.docx)***
+***HINWEIS: Eine detailliertere Anleitung befindet sich in unserer Dokumentation (M169_Realisierung_ABS.docx)***
